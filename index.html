@@ -28,8 +28,8 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
                         <li class="nav-item"><a class="nav-link" href="#Twinstick">TwinStick</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects 2</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects 3</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects 2">Projects 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects 3">Projects 3</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                     </ul>
                 </div>
@@ -57,9 +57,9 @@
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">About Me</h2>
                         <p style="color: lightgoldenrodyellow;" class="c" > 
-                            Ik ben Yuk Zheng, 22 jaar oud, en dit is mijn tweede jaar als gamedeveloper. 
-                            In mijn vrije tijd ga ik graag naar plekken in Nederland waar ik nog niet ben geweest. 
-                            Ik ga ook graag naar de bioscoop, en dit doe ik allemaal met mijn vriendin. 
+                            Ik ben Yuk Zheng, 23 jaar oud, en dit is mijn tweede jaar als gamedeveloper. 
+                            In mijn vrije tijd bezoek ik graag plekken in Nederland waar ik nog niet ben geweest. 
+                            Ik ga ook graag naar de bioscoop, en dit doe ik allemaal samen met mijn vriendin
                         </p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </section>
-        <section class="projects-section bg-light" id="projects">
+        <section class="projects-section bg-light" id="projects 2">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-0 justify-content-center">
                     <div class="col-lg-6"><img class="img-fluid" src="assets/img/Reloadgefixt.gif" alt="Reload gefixt gif " /></div>
@@ -122,11 +122,58 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">Code uitleg van hierboven</h4>
+                                    <pre class="mb-0 text-white-50"><code>void ReloadWeapon()
+                                {
+                                    if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isShooting)
+                                    {
+                                        if (playerGun != null && playerGun.hasPickedUpWeapon)
+                                        {
+                                            if (playerGun.currentAmmo > 0 && playerGun.currentClip < playerGun.maxClipSize)
+                                            {
+                                                isReloading = true;
+                                                Debug.Log("ReloadWeapon called");
+                                                playerGun.Reload();
+                                                isShooting = false;
+                                            }
+                                            else if (playerGun.currentAmmo == 0)
+                                            {
+                                                StartCoroutine(displayer.DisplayError("No ammo available for reload."));
+                                            }
+                                            else if (playerGun.currentClip == playerGun.maxClipSize)
+                                            {
+                                                StartCoroutine(displayer.DisplayError("Clip is already full."));
+                                            }
+                                        }
+                                    }
+                                    else if (isReloading && !playerGun.IsReloading())
+                                    {
+                                        isReloading = false;
+                                        isShooting = false;
+                                        playerGun.EnableReloadImage(false); // Schakel de reloadImage uit als het herladen is voltooid
+                                    }
+                                
+                                    if (isReloading)
+                                    {
+                                        playerGun.EnableReloadImage(true); 
+                                    }
+                                    else
+                                    {
+                                        playerGun.EnableReloadImage(false); 
+                                    }
+                                }</code></pre>
+                                </div>
+                                
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="projects-section bg-light" id="projects">
+        <section class="projects-section bg-light" id="projects 3">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
@@ -264,7 +311,7 @@
                                 <i class="fas fa-map-marked-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Address</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                                <div class="small text-black-50">3755WK Kropaar, Eemnes</div>
                             </div>
                         </div>
                     </div>
@@ -274,7 +321,7 @@
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                                <div class="small text-black-50"><a href="#!">zheng103388@hotmail.com</a></div>
                             </div>
                         </div>
                     </div>
@@ -284,7 +331,7 @@
                                 <i class="fas fa-mobile-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Phone</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">+1 (555) 902-8832</div>
+                                <div class="small text-black-50">+31 6 85150223</div>
                             </div>
                         </div>
                     </div>
