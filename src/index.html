@@ -97,100 +97,142 @@
         });
     });
 </script>
-
-        <!-- About-->
-        <section class="about-section text-center" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4">About Me</h2>
-                        <p style="color: rgb(0, 0, 0);" class="c">
-                            Ik ben Yuk Zheng, 24 jaar oud, en dit is mijn tweede jaar als Gamedeveloper/XR. Ik heb gemixte projecten hier onder staan. 
-                            In mijn vrije tijd bezoek ik graag plekken in Nederland waar ik nog niet ben geweest. 
-                            Ik ga ook graag naar de bioscoop, en dit doe ik allemaal samen met mijn vriendin.
-                        </p>
-                    
-                        <!-- Skill Bar Section -->
-                        <div class="skills-section" style="margin-bottom: 100px;">
-                            <h3 class="text-white mt-4">My Skills</h3>
-                            <div class="skill-bar">
-                                <span class="skill-title">Communicatie</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-percentage="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <span class="skill-title">Unity</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-percentage="75"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <span class="skill-title">Unreal</span>
-                                <div class="progress-bar">
-                                    <div class="progress" data-percentage="20"></div>
-                                </div>
-                            </div>
+<!-- About -->
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="text-white mb-4">About Me</h2>
+                <p style="color: rgb(255, 255, 255);" class="c">
+                    Ik ben Yuk Zheng, 24 jaar oud, en dit is mijn tweede jaar als Gamedeveloper/XR. Ik heb gemixte projecten hier onder staan. 
+                    In mijn vrije tijd bezoek ik graag plekken in Nederland waar ik nog niet ben geweest. 
+                    Ik ga ook graag naar de bioscoop, en dit doe ik allemaal samen met mijn vriendin.
+                </p>
+            
+                <!-- Skill Bar Section -->
+                <div class="skills-section" style="margin-bottom: 100px;">
+                    <h3 class="text-white mt-4">My Skills</h3>
+                    <div class="skill-bar">
+                        <span class="skill-title">Communicatie</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-percentage="85"></div>
                         </div>
                     </div>
-                    
-                    <!-- CSS Styling -->
-                    <style>
-                        .skill-bar {
-                            margin-bottom: 15px;
-                        }
-                    
-                        .skill-title {
-                            color: rgb(0, 0, 0);
-                            font-size: 16px;
-                            margin-bottom: 5px;
-                            display: block;
-                        }
-                    
-                        .progress-bar {
-                            background-color: #2f00ff;
-                            border-radius: 5px;
-                            overflow: hidden;
-                            height: 20px;
-                            width: 100%;
-                        }
-                    
-                        .progress {
-                            background-color: rgb(0, 0, 0);
-                            height: 100%;
-                            border-radius: 5px 0 0 5px;
-                            width: 0; /* Start with 0% width */
-                            transition: width 1.5s ease; /* Smooth animation */
-                        }
-                    </style>
-                    
-                    <!-- JavaScript for Scroll Animation -->
-                    <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            const progressBars = document.querySelectorAll(".progress");
-                    
-                            const onScroll = () => {
-                                progressBars.forEach((bar) => {
-                                    const rect = bar.getBoundingClientRect();
-                                    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-                    
-                                    if (isVisible && !bar.classList.contains("animated")) {
-                                        const percentage = bar.getAttribute("data-percentage");
-                                        bar.style.width = percentage + "%";
-                                        bar.classList.add("animated"); // Ensure animation happens only once
-                                    }
-                                });
-                            };
-                    
-                            window.addEventListener("scroll", onScroll);
-                            onScroll(); // Trigger on page load in case already in view
-                        });
-                    </script>
-                    
+                    <div class="skill-bar">
+                        <span class="skill-title">Unity</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-percentage="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-title">Unreal</span>
+                        <div class="progress-bar">
+                            <div class="progress" data-percentage="20"></div>
+                        </div>
+                    </div>
                 </div>
-                <img class="img-fluid" src="assets/img/me.jpeg" alt="ik" width="500" height="500" /> 
             </div>
-        </section>
+        </div>
+
+        <!-- Parallax Image -->
+        <div class="parallax-container">
+            <img class="parallax-img img-fluid" src="assets/img/me.jpeg" alt="ik" width="500" height="500" />
+        </div>
+    </div>
+</section>
+
+<!-- CSS Styling -->
+<style>
+    /* Skills Section */
+    .skill-bar {
+        margin-bottom: 15px;
+    }
+
+    .skill-title {
+        color: rgb(255, 0, 0);
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .progress-bar {
+        background-color: #014a4d;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 20px;
+        width: 100%;
+    }
+
+    .progress {
+        background-color: rgb(6, 2, 248);
+        height: 100%;
+        border-radius: 5px 0 0 5px;
+        width: 0; /* Start with 0% width */
+        transition: width 1.5s ease; /* Smooth animation */
+    }
+
+    /* Parallax Image */
+    .parallax-container {
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+        perspective: 1000px;
+        margin: auto;
+    }
+
+    .parallax-img {
+        position: absolute;
+        width: 120%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    // Skills Bar Scroll Animation
+    document.addEventListener("DOMContentLoaded", () => {
+        const progressBars = document.querySelectorAll(".progress");
+
+        const onScroll = () => {
+            progressBars.forEach((bar) => {
+                const rect = bar.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+                if (isVisible && !bar.classList.contains("animated")) {
+                    const percentage = bar.getAttribute("data-percentage");
+                    bar.style.width = percentage + "%";
+                    bar.classList.add("animated"); // Ensure animation happens only once
+                }
+            });
+        };
+
+        window.addEventListener("scroll", onScroll);
+        onScroll(); // Trigger on page load in case already in view
+    });
+
+    // Parallax Effect for Image
+    document.querySelector(".parallax-container").addEventListener("mousemove", (e) => {
+        const container = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - container.left;
+        const y = e.clientY - container.top;
+
+        const centerX = container.width / 2;
+        const centerY = container.height / 2;
+
+        const deltaX = (x - centerX) / centerX; // Value between -1 and 1
+        const deltaY = (y - centerY) / centerY; // Value between -1 and 1
+
+        const img = e.currentTarget.querySelector(".parallax-img");
+        const movement = 20; // Movement range in pixels
+
+        img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
+    });
+</script>
         <!-- Projects-->
         <section class="projects-section bg-light" id="Twinstick">
             <div class="container px-4 px-lg-5">
