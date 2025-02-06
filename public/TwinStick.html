@@ -28,7 +28,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#Twinstick">Code</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects 2">Projects 2</a></li>
-                        <li class="nav-item"><a class="nav-link" href="VR.html">Projects 3</a></li>
+                        <li class="nav-item"><a class="nav-link" href="VR.html">VR</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                     </ul>
                 </div>
@@ -54,13 +54,11 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Project 2</h2>
                         <p style="color: lightgoldenrodyellow;" class="c" > 
                             
                         </p>
                     </div>
                 </div>
-                <img class="img-fluid" src="assets/img/me.jpeg" alt="ik" width="500" height="500" /> 
             </div>
         </section>
         <!-- Projects-->
@@ -124,47 +122,47 @@
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
                                     <h4 class="text-white">Code uitleg van hierboven</h4>
-                                    <pre class="mb-0 text-white-50"><code>void ReloadWeapon()
-                                {
-                                    if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isShooting)
+                                    <pre class="mb-0 text-white-50" style="text-align: left; background-color: #333; padding: 10px; border-radius: 5px;"><code>void ReloadWeapon()
                                     {
-                                        if (playerGun != null && playerGun.hasPickedUpWeapon)
+                                        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isShooting)
                                         {
-                                            if (playerGun.currentAmmo > 0 && playerGun.currentClip < playerGun.maxClipSize)
+                                            if (playerGun != null && playerGun.hasPickedUpWeapon)
                                             {
-                                                isReloading = true;
-                                                Debug.Log("ReloadWeapon called");
-                                                playerGun.Reload();
-                                                isShooting = false;
-                                            }
-                                            else if (playerGun.currentAmmo == 0)
-                                            {
-                                                StartCoroutine(displayer.DisplayError("No ammo available for reload."));
-                                            }
-                                            else if (playerGun.currentClip == playerGun.maxClipSize)
-                                            {
-                                                StartCoroutine(displayer.DisplayError("Clip is already full."));
+                                                if (playerGun.currentAmmo > 0 && playerGun.currentClip < playerGun.maxClipSize)
+                                                {
+                                                    isReloading = true;
+                                                    Debug.Log("ReloadWeapon called");
+                                                    playerGun.Reload();
+                                                    isShooting = false;
+                                                }
+                                                else if (playerGun.currentAmmo == 0)
+                                                {
+                                                    StartCoroutine(displayer.DisplayError("No ammo available for reload."));
+                                                }
+                                                else if (playerGun.currentClip == playerGun.maxClipSize)
+                                                {
+                                                    StartCoroutine(displayer.DisplayError("Clip is already full."));
+                                                }
                                             }
                                         }
-                                    }
-                                    else if (isReloading && !playerGun.IsReloading())
-                                    {
-                                        isReloading = false;
-                                        isShooting = false;
-                                        playerGun.EnableReloadImage(false); // Schakel de reloadImage uit als het herladen is voltooid
-                                    }
-                                
-                                    if (isReloading)
-                                    {
-                                        playerGun.EnableReloadImage(true); 
-                                    }
-                                    else
-                                    {
-                                        playerGun.EnableReloadImage(false); 
-                                    }
-                                }</code></pre>
+                                        else if (isReloading && !playerGun.IsReloading())
+                                        {
+                                            isReloading = false;
+                                            isShooting = false;
+                                            playerGun.EnableReloadImage(false); // Schakel de reloadImage uit als het herladen is voltooid
+                                        }
+                                    
+                                        if (isReloading)
+                                        {
+                                            playerGun.EnableReloadImage(true); 
+                                        }
+                                        else
+                                        {
+                                            playerGun.EnableReloadImage(false); 
+                                        }
+                                    }</code></pre>
                                 </div>
-                                
+                            </div>
                         </div>
                     </div>
                 </div>
