@@ -11201,3 +11201,13 @@ body {
 .footer {
   padding: 5rem 0;
 }
+.carousel-item img {
+  max-height: 750px; 
+  width: auto;
+  object-fit: contain; 
+  margin: 0 auto; 
+}
+
+
+
+
