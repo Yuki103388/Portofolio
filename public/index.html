@@ -88,7 +88,7 @@
             const hoverGif = block.getAttribute("data-hover");
 
             block.addEventListener("mouseenter", () => {
-                block.style.backgroundImage = `url('${hoverGif}')`;
+                block.style.backgroundImage = `url('${hoverGif}?${new Date().getTime()}')`;
             });
 
             block.addEventListener("mouseleave", () => {
@@ -274,7 +274,7 @@
 
                 <!-- Project 3 -->
                 <div class="carousel-item">
-                    <img src="assets/img/GhostAR.png" class="d-block w-100" alt="VR Project">
+                    <img src="assets/img/GhostAR.jpg" class="d-block w-100" alt="VR Project">
                     <div class="carousel-caption d-md-block bg-dark p-3 rounded">
                         <h4>VR Project</h4>
                         <p>Een meeslepende VR-ervaring waarin je de wereld op een nieuwe manier ontdekt.</p>
