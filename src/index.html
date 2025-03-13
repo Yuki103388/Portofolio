@@ -94,12 +94,10 @@
             block.addEventListener("mouseleave", () => {
                 block.style.backgroundImage = staticImage;
             });
+           block.addEventListener("click", () => {
+                window.location.href = link; 
 
-            block.addEventListener("click", () => {
-                if (link) {
-                    window.location.href = link;
-                }
-            });
+          
         });
     });
 </script>
