@@ -45,9 +45,9 @@
 
             <!-- Blokjes met GIFs -->
             <div class="gif-blocks mt-4">
-                <div class="block" style="background-image: url('assets/img/LogoTwin.jpg');" data-hover="assets/img/TwinStickGameplay.gif" data-link="TwinStick.html"></div>
-                <div class="block" style="background-image: url('assets/img/CastleOfMischief.png');" data-hover="assets/img/Castle.gif" data-link="CastleOfMischief.html"></div>
-                <div class="block" style="background-image: url('assets/img/static3.jpg');" data-hover="assets/img/animation3.gif" data-link="VR.html"></div>
+                <a href="TwinStick.html" class="block" style="background-image: url('assets/img/LogoTwin.jpg');" data-hover="assets/img/TwinStickGameplay.gif"></a>
+                <a href="CastleOfMischief.html" class="block" style="background-image: url('assets/img/CastleOfMischief.png');" data-hover="assets/img/Castle.gif"></a>
+                <a href="VR.html" class="block" style="background-image: url('assets/img/static3.jpg');" data-hover="assets/img/animation3.gif"></a>
             </div>
         </div>
     </div>
@@ -58,49 +58,44 @@
     .gif-blocks {
         display: flex;
         justify-content: center;
-        gap: 20px; /* Ruimte tussen de blokjes */
+        gap: 20px;
         margin-top: 20px;
     }
 
     .block {
-        width: 200px; /* Blokjes breedte */
-        height: 200px; /* Blokjes hoogte */
+        width: 200px;
+        height: 200px;
         background-size: cover;
         background-position: center;
-        border-radius: 8px; /* Maak de hoeken rond */
-        transition: transform 0.3s ease; /* Animatie bij hover */
+        border-radius: 8px;
+        transition: transform 0.3s ease;
         cursor: pointer;
+        display: block;
     }
 
     .block:hover {
-        transform: scale(1.1); /* Blokje wordt groter bij hover */
+        transform: scale(1.1);
     }
 </style>
 
 <!-- JavaScript -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const blocks = document.querySelectorAll(".block");
-
-        blocks.forEach((block) => {
-            const staticImage = block.style.backgroundImage;
+        document.querySelectorAll(".block").forEach(block => {
+            block.dataset.original = block.style.backgroundImage;
             const hoverGif = block.getAttribute("data-hover");
-            const link = block.getAttribute("data-link");
 
             block.addEventListener("mouseenter", () => {
-                block.style.backgroundImage = `url('${hoverGif}?${new Date().getTime()}')`;
+                block.style.setProperty("background-image", `url('${hoverGif}')`);
             });
 
             block.addEventListener("mouseleave", () => {
-                block.style.backgroundImage = staticImage;
-            });
-            block.addEventListener("click", () => {
-                window.location.href = link; 
+                block.style.setProperty("background-image", block.dataset.original);
             });
         });
     });
-
 </script>
+
 <!-- About -->
 <section class="about-section text-center" id="about">
     <div class="container px-4 px-lg-5">
@@ -298,51 +293,6 @@
         </div>
     </div>
 </section>
-
-
-    <!-- Signup-->
-    <section class="signup-section" id="signup">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-10 col-lg-8 mx-auto text-center">
-                    <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                    <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Email address input-->
-                        <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                            <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
-                        </div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3 mt-2 text-white">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </section>
         <!-- Contact-->
         <section class="contact-section bg-black">
