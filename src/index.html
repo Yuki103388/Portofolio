@@ -45,9 +45,9 @@
 
             <!-- Blokjes met GIFs -->
             <div class="gif-blocks mt-4">
-                <div class="block" style="background-image: url('assets/img/LogoTwin.jpg');" data-hover="assets/img/TwinStickGameplay.gif"></div>
-                <div class="block" style="background-image: url('assets/img/CastleOfMischief.png');" data-hover="assets/img/Castle.gif"></div>
-                <div class="block" style="background-image: url('assets/img/static3.jpg');" data-hover="assets/img/animation3.gif"></div>
+                <div class="block" style="background-image: url('assets/img/LogoTwin.jpg');" data-hover="assets/img/TwinStickGameplay.gif" data-link="TwinStick.html"></div>
+                <div class="block" style="background-image: url('assets/img/CastleOfMischief.png');" data-hover="assets/img/Castle.gif" data-link="CastleOfMischief.html"></div>
+                <div class="block" style="background-image: url('assets/img/static3.jpg');" data-hover="assets/img/animation3.gif" data-link="VR.html"></div>
             </div>
         </div>
     </div>
@@ -85,6 +85,7 @@
         blocks.forEach((block) => {
             const staticImage = block.style.backgroundImage;
             const hoverGif = block.getAttribute("data-hover");
+            const link = block.getAttribute("data-link");
 
             block.addEventListener("mouseenter", () => {
                 block.style.backgroundImage = `url('${hoverGif}?${new Date().getTime()}')`;
@@ -92,6 +93,10 @@
 
             block.addEventListener("mouseleave", () => {
                 block.style.backgroundImage = staticImage;
+            });
+
+            block.addEventListener("click", () => {
+                window.location.href = link;
             });
         });
     });
