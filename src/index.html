@@ -96,7 +96,9 @@
             });
 
             block.addEventListener("click", () => {
-                window.location.href = link;
+                if (link) {
+                    window.location.href = link;
+                }
             });
         });
     });
