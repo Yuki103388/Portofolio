@@ -11269,8 +11269,12 @@ body {
   background-color: rgb(6, 2, 248);
   height: 100%;
   border-radius: 5px 0 0 5px;
-  width: 0; /* Start with 0% width */
-  transition: width 1.5s ease; /* Smooth animation */
+  width: 0; /* Blijft op 0% tot de animatie start */
+  transition: width 1.5s ease; /* Soepele animatie */
+}
+
+.progress-animate {
+  width: 80%; /* Pas dit aan per skill */
 }
 
 /* Parallax Image */

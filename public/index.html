@@ -70,6 +70,29 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const progressBars = document.querySelectorAll(".progress");
+
+    function checkVisibility() {
+        progressBars.forEach(bar => {
+            const rect = bar.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (!bar.classList.contains("progress-animate")) {
+                    bar.classList.add("progress-animate");
+                }
+            } else {
+                // Haal de klasse weg zodat de animatie opnieuw kan starten
+                bar.classList.remove("progress-animate");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    checkVisibility(); // Directe check bij laden
+});
+</script>
+
 
 <!-- About -->
 <section class="about-section text-center" id="about">
