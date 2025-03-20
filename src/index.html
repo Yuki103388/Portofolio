@@ -47,7 +47,7 @@
             <div class="gif-blocks mt-4">
                 <a href="TwinStick.html" class="block" style="background-image: url('assets/img/LogoTwin.jpg');" data-hover="assets/img/TwinStickGameplay.gif"></a>
                 <a href="CastleOfMischief.html" class="block" style="background-image: url('assets/img/CastleOfMischief.png');" data-hover="assets/img/Castle.gif"></a>
-                <a href="VR.html" class="block" style="background-image: url('assets/img/GhostAR.jpg');" data-hover="assets/img/Placeholder.gif"></a>
+                <a href="VR.html" class="block" style="background-image: url('assets/img/GhostAR.jpg');" data-hover="assets/img/Ghost_AR_Kort.gif"></a>
             </div>
         </div>
     </div>
@@ -86,30 +86,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    window.addEventListener("scroll", onScroll);
-    onScroll(); // Trigger on page load in case already in view
-});
+    const debounce = (func, wait) => {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    };
+
+    window.addEventListener("scroll", debounce(onScroll, 100));
 
     // Parallax Effect for Image
     const parallaxContainer = document.querySelector(".parallax-container");
     if (parallaxContainer) {
         parallaxContainer.addEventListener("mousemove", (e) => {
-        const container = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - container.left;
-        const y = e.clientY - container.top;
+            const container = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - container.left;
+            const y = e.clientY - container.top;
 
-        const centerX = container.width / 2;
-        const centerY = container.height / 2;
+            const centerX = container.width / 2;
+            const centerY = container.height / 2;
 
-        const deltaX = (x - centerX) / centerX; // Value between -1 and 1
-        const deltaY = (y - centerY) / centerY; // Value between -1 and 1
+            const deltaX = (x - centerX) / centerX; // Value between -1 and 1
+            const deltaY = (y - centerY) / centerY; // Value between -1 and 1
 
-        const img = e.currentTarget.querySelector(".parallax-img");
-        const movement = 20; // Movement range in pixels
+            const img = e.currentTarget.querySelector(".parallax-img");
+            const movement = 20; // Movement range in pixels
 
-        img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
+            img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
         });
     }
+});
 </script>
 
 <!-- About -->
