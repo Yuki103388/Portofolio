@@ -69,6 +69,64 @@
             });
         });
     });
+    document.addEventListener("DOMContentLoaded", function () {
+    const progressBars = document.querySelectorAll(".progress");
+
+    function checkVisibility() {
+        progressBars.forEach(bar => {
+            const rect = bar.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (!bar.classList.contains("progress-animate")) {
+                    bar.classList.add("progress-animate");
+                }
+            } else {
+                // Haal de klasse weg zodat de animatie opnieuw kan starten
+                bar.classList.remove("progress-animate");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkVisibility);
+    checkVisibility(); // Directe check bij laden
+});
+ // Skills Bar Scroll Animation
+ document.addEventListener("DOMContentLoaded", () => {
+        const progressBars = document.querySelectorAll(".progress");
+
+        const onScroll = () => {
+            progressBars.forEach((bar) => {
+                const rect = bar.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+                if (isVisible && !bar.classList.contains("animated")) {
+                    const percentage = bar.getAttribute("data-percentage");
+                    bar.style.width = percentage + "%";
+                    bar.classList.add("animated"); // Ensure animation happens only once
+                }
+            });
+        };
+
+        window.addEventListener("scroll", onScroll);
+        onScroll(); // Trigger on page load in case already in view
+    });
+
+    // Parallax Effect for Image
+    document.querySelector(".parallax-container").addEventListener("mousemove", (e) => {
+        const container = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - container.left;
+        const y = e.clientY - container.top;
+
+        const centerX = container.width / 2;
+        const centerY = container.height / 2;
+
+        const deltaX = (x - centerX) / centerX; // Value between -1 and 1
+        const deltaY = (y - centerY) / centerY; // Value between -1 and 1
+
+        const img = e.currentTarget.querySelector(".parallax-img");
+        const movement = 20; // Movement range in pixels
+
+        img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
+    });
 </script>
 
 <!-- About -->
@@ -115,48 +173,7 @@
     </div>
 </section>
 
-<!-- JavaScript -->
-<script>
-    // Skills Bar Scroll Animation
-    document.addEventListener("DOMContentLoaded", () => {
-        const progressBars = document.querySelectorAll(".progress");
-
-        const onScroll = () => {
-            progressBars.forEach((bar) => {
-                const rect = bar.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-                if (isVisible && !bar.classList.contains("animated")) {
-                    const percentage = bar.getAttribute("data-percentage");
-                    bar.style.width = percentage + "%";
-                    bar.classList.add("animated"); // Ensure animation happens only once
-                }
-            });
-        };
-
-        window.addEventListener("scroll", onScroll);
-        onScroll(); // Trigger on page load in case already in view
-    });
-
-    // Parallax Effect for Image
-    document.querySelector(".parallax-container").addEventListener("mousemove", (e) => {
-        const container = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - container.left;
-        const y = e.clientY - container.top;
-
-        const centerX = container.width / 2;
-        const centerY = container.height / 2;
-
-        const deltaX = (x - centerX) / centerX; // Value between -1 and 1
-        const deltaY = (y - centerY) / centerY; // Value between -1 and 1
-
-        const img = e.currentTarget.querySelector(".parallax-img");
-        const movement = 20; // Movement range in pixels
-
-        img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
-    });
-</script>
-
+<!-- Project Carousel -->
 <section id="project-carousel" class="projects-section bg-dark" style="position: relative; padding: 50px 0;">
     <!-- Achtergrondafbeelding met Overlay -->
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('assets/img/demo-image-01.jpg') no-repeat center center/cover; z-index: 0;"></div>
