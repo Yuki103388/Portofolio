@@ -55,63 +55,45 @@
 
 <!-- JavaScript -->
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".block").forEach(block => {
-            block.dataset.original = block.style.backgroundImage;
-            const hoverGif = block.getAttribute("data-hover");
+document.addEventListener("DOMContentLoaded", () => {
+    // Hover effect for GIF blocks
+    document.querySelectorAll(".block").forEach(block => {
+        block.dataset.original = block.style.backgroundImage;
+        const hoverGif = block.getAttribute("data-hover");
 
-            block.addEventListener("mouseenter", () => {
-                block.style.setProperty("background-image", `url('${hoverGif}')`);
-            });
+        block.addEventListener("mouseenter", () => {
+            block.style.setProperty("background-image", `url('${hoverGif}')`);
+        });
 
-            block.addEventListener("mouseleave", () => {
-                block.style.setProperty("background-image", block.dataset.original);
-            });
+        block.addEventListener("mouseleave", () => {
+            block.style.setProperty("background-image", block.dataset.original);
         });
     });
-    document.addEventListener("DOMContentLoaded", function () {
+
+    // Skills Bar Scroll Animation
     const progressBars = document.querySelectorAll(".progress");
 
-    function checkVisibility() {
-        progressBars.forEach(bar => {
+    const onScroll = () => {
+        progressBars.forEach((bar) => {
             const rect = bar.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                if (!bar.classList.contains("progress-animate")) {
-                    bar.classList.add("progress-animate");
-                }
-            } else {
-                // Haal de klasse weg zodat de animatie opnieuw kan starten
-                bar.classList.remove("progress-animate");
+            const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+            if (isVisible && !bar.classList.contains("animated")) {
+                const percentage = bar.getAttribute("data-percentage");
+                bar.style.width = percentage + "%";
+                bar.classList.add("animated"); // Ensure animation happens only once
             }
         });
-    }
+    };
 
-    window.addEventListener("scroll", checkVisibility);
-    checkVisibility(); // Directe check bij laden
+    window.addEventListener("scroll", onScroll);
+    onScroll(); // Trigger on page load in case already in view
 });
- // Skills Bar Scroll Animation
- document.addEventListener("DOMContentLoaded", () => {
-        const progressBars = document.querySelectorAll(".progress");
-
-        const onScroll = () => {
-            progressBars.forEach((bar) => {
-                const rect = bar.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-                if (isVisible && !bar.classList.contains("animated")) {
-                    const percentage = bar.getAttribute("data-percentage");
-                    bar.style.width = percentage + "%";
-                    bar.classList.add("animated"); // Ensure animation happens only once
-                }
-            });
-        };
-
-        window.addEventListener("scroll", onScroll);
-        onScroll(); // Trigger on page load in case already in view
-    });
 
     // Parallax Effect for Image
-    document.querySelector(".parallax-container").addEventListener("mousemove", (e) => {
+    const parallaxContainer = document.querySelector(".parallax-container");
+    if (parallaxContainer) {
+        parallaxContainer.addEventListener("mousemove", (e) => {
         const container = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - container.left;
         const y = e.clientY - container.top;
@@ -126,7 +108,8 @@
         const movement = 20; // Movement range in pixels
 
         img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
-    });
+        });
+    }
 </script>
 
 <!-- About -->
