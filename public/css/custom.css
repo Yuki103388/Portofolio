@@ -3800,7 +3800,7 @@ textarea.form-control-lg {
 
 
 .navbar {
-  background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Vervang met jouw gewenste kleuren */
+  background: linear-gradient(90deg, #Fcc89b, #ff5fa2); 
   color: rgb(0, 0, 0); /* Zorgt ervoor dat de tekst goed leesbaar blijft */
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.5rem;
@@ -11251,14 +11251,14 @@ body {
 }
 
 .skill-title {
-  color: rgb(255, 0, 0);
+  color: whitesmoke;
   font-size: 16px;
   margin-bottom: 5px;
   display: block;
 }
 
 .progress-bar {
-  background-color: #014a4d;
+  background-color: whitesmoke;
   border-radius: 5px;
   overflow: hidden;
   height: 20px;
@@ -11266,7 +11266,7 @@ body {
 }
 
 .progress {
-  background-color: rgb(6, 2, 248);
+  background-color: goldenrod;
   height: 100%;
   border-radius: 5px 0 0 5px;
   width: 0; /* Blijft op 0% tot de animatie start */
