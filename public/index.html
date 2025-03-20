@@ -70,29 +70,6 @@
         });
     });
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const progressBars = document.querySelectorAll(".progress");
-
-    function checkVisibility() {
-        progressBars.forEach(bar => {
-            const rect = bar.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                if (!bar.classList.contains("progress-animate")) {
-                    bar.classList.add("progress-animate");
-                }
-            } else {
-                // Haal de klasse weg zodat de animatie opnieuw kan starten
-                bar.classList.remove("progress-animate");
-            }
-        });
-    }
-
-    window.addEventListener("scroll", checkVisibility);
-    checkVisibility(); // Directe check bij laden
-});
-</script>
-
 
 <!-- About -->
 <section class="about-section text-center" id="about">
@@ -137,57 +114,6 @@
         </div>
     </div>
 </section>
-
-<!-- CSS Styling -->
-<style>
-    /* Skills Section */
-    .skill-bar {
-        margin-bottom: 15px;
-    }
-
-    .skill-title {
-        color: rgb(255, 0, 0);
-        font-size: 16px;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .progress-bar {
-        background-color: #014a4d;
-        border-radius: 5px;
-        overflow: hidden;
-        height: 20px;
-        width: 100%;
-    }
-
-    .progress {
-        background-color: rgb(6, 2, 248);
-        height: 100%;
-        border-radius: 5px 0 0 5px;
-        width: 0; /* Start with 0% width */
-        transition: width 1.5s ease; /* Smooth animation */
-    }
-
-    /* Parallax Image */
-    .parallax-container {
-        width: 500px;
-        height: 500px;
-        overflow: hidden;
-        position: relative;
-        perspective: 1000px;
-        margin: auto;
-    }
-
-    .parallax-img {
-        position: absolute;
-        width: 120%;
-        height: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease-out;
-    }
-</style>
 
 <!-- JavaScript -->
 <script>
