@@ -11224,26 +11224,25 @@ body {
 }
 
 .gif-blocks {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 20px;
-    }
+}
 
 .block {
-      width: 200px;
-      height: 200px;
-      background-size: cover;
+  width: 100%;
+  height: 200px;
+  background-size: cover;
   background-position: center;
   border-radius: 8px;
   transition: transform 0.3s ease;
   cursor: pointer;
-  display: block;
-    }
+}
 
 .block:hover {
-      transform: scale(1.1);
-        }
+  transform: scale(1.1);
+}
     
 /* Skills Section */
 .skill-bar {
