@@ -11231,7 +11231,7 @@ body {
 }
 
 .block {
-  width: 100%;
+  width: 200%;
   height: 200px;
   background-size: cover;
   background-position: center;
