@@ -11224,14 +11224,13 @@ body {
 }
 
 .gif-blocks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 20px;
   margin-top: 20px;
 }
 
 .block {
-  width: 100%;
   height: 200px;
   background-size: cover;
   background-position: center;
