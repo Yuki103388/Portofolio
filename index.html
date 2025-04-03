@@ -83,55 +83,52 @@ document.addEventListener("DOMContentLoaded", () => {
             block.style.setProperty("background-image", block.dataset.original);
         });
     });
-});
-</script>
+     // Skills Bar Scroll Animation
+     const progressBars = document.querySelectorAll(".progress");
 
-    // Skills Bar Scroll Animation
-    const progressBars = document.querySelectorAll(".progress");
+const onScroll = () => {
+    progressBars.forEach((bar) => {
+        const rect = bar.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
 
-    const onScroll = () => {
-        progressBars.forEach((bar) => {
-            const rect = bar.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        if (isVisible && !bar.classList.contains("animated")) {
+            const percentage = bar.getAttribute("data-percentage");
+            bar.style.width = percentage + "%";
+            bar.classList.add("animated"); // Ensure animation happens only once
+        }
+    });
+};
 
-            if (isVisible && !bar.classList.contains("animated")) {
-                const percentage = bar.getAttribute("data-percentage");
-                bar.style.width = percentage + "%";
-                bar.classList.add("animated"); // Ensure animation happens only once
-            }
-        });
+const debounce = (func, wait) => {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
     };
+};
 
-    const debounce = (func, wait) => {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-    };
+window.addEventListener("scroll", debounce(onScroll, 100));
 
-    window.addEventListener("scroll", debounce(onScroll, 100));
+// Parallax Effect for Image
+const parallaxContainer = document.querySelector(".parallax-container");
+if (parallaxContainer) {
+    parallaxContainer.addEventListener("mousemove", (e) => {
+        const container = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - container.left;
+        const y = e.clientY - container.top;
 
-    // Parallax Effect for Image
-    const parallaxContainer = document.querySelector(".parallax-container");
-    if (parallaxContainer) {
-        parallaxContainer.addEventListener("mousemove", (e) => {
-            const container = e.currentTarget.getBoundingClientRect();
-            const x = e.clientX - container.left;
-            const y = e.clientY - container.top;
+        const centerX = container.width / 2;
+        const centerY = container.height / 2;
 
-            const centerX = container.width / 2;
-            const centerY = container.height / 2;
+        const deltaX = (x - centerX) / centerX; // Value between -1 and 1
+        const deltaY = (y - centerY) / centerY; // Value between -1 and 1
 
-            const deltaX = (x - centerX) / centerX; // Value between -1 and 1
-            const deltaY = (y - centerY) / centerY; // Value between -1 and 1
+        const img = e.currentTarget.querySelector(".parallax-img");
+        const movement = 20; // Movement range in pixels
 
-            const img = e.currentTarget.querySelector(".parallax-img");
-            const movement = 20; // Movement range in pixels
-
-            img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
-        });
-    }
+        img.style.transform = `translate(-50%, -50%) translate(${deltaX * movement}px, ${deltaY * movement}px)`;
+    });
+}
 });
 </script>
 
@@ -140,35 +137,59 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8">
-                <h2 class="text-white mb-4">About Me</h2>
-                <p style="color: rgb(255, 255, 255);" class="c">
-                    Ik ben Yuk Zheng, 24 jaar oud, en dit is mijn tweede jaar als Gamedeveloper/XR. Ik heb gemixte projecten hier onder staan. 
-                    In mijn vrije tijd bezoek ik graag plekken in Nederland waar ik nog niet ben geweest. 
-                    Ik ga ook graag naar de bioscoop, en dit doe ik allemaal samen met mijn vriendin.
-                </p>
+            <h2 class="text-white mb-4">About Me</h2>
+            <p style="color: rgb(255, 255, 255);" class="c">
+                Ik ben Yuk Zheng, 24 jaar oud, en dit is mijn tweede jaar als Gamedeveloper/XR. Ik heb gemixte projecten hier onder staan. 
+                In mijn vrije tijd bezoek ik graag plekken in Nederland waar ik nog niet ben geweest. 
+                Ik ga ook graag naar de bioscoop, en dit doe ik allemaal samen met mijn vriendin.
+            </p>
             
-                <!-- Skill Bar Section -->
-                <div class="skills-section" style="margin-bottom: 100px;">
-                    <h3 class="text-white mt-4">My Skills</h3>
-                    <div class="skill-bar">
-                        <span class="skill-title">Communicatie</span>
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <span class="skill-title">Unity</span>
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="75"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar">
-                        <span class="skill-title">Unreal</span>
-                        <div class="progress-bar">
-                            <div class="progress" data-percentage="20"></div>
-                        </div>
+            <!-- Skill Bar Section -->
+            <div class="skills-section" style="margin-bottom: 100px;">
+                <h3 class="text-white mt-4">My Skills</h3>
+                
+                <!-- Engine Skills -->
+                <h4 class="text-white mt-3">Engine Skills</h4>
+                <div class="skill-bar">
+                <span class="skill-title">Unity</span>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="75"></div>
+                </div>
+                </div>
+                <div class="skill-bar">
+                <span class="skill-title">Unreal</span>
+                  <div class="progress-bar">
+                    <div class="progress" data-percentage="40"></div>
+                  </div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-title">C#</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="75"></div>
                     </div>
                 </div>
+                <div class="skill-bar">
+                    <span class="skill-title">Blueprint Unreal</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="40"></div>
+                    </div>
+
+                </div>
+                
+                <!-- Other Skills -->
+                <h4 class="text-white mt-3">Other Skills</h4>
+                <div class="skill-bar">
+                <span class="skill-title">Communicatie</span>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="85"></div>
+                </div>
+                <div class="skill-bar">
+                    <span class="skill-title">Scrum</span>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="60"></div>
+                    </div>
+                </div>
+                
             </div>
         </div>
 
