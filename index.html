@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         block.dataset.original = block.style.backgroundImage;
         const hoverGif = block.getAttribute("data-hover");
 
+        // Hover effect for desktop
         block.addEventListener("mouseenter", () => {
             block.style.setProperty("background-image", `url('${hoverGif}')`);
         });
@@ -72,7 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
         block.addEventListener("mouseleave", () => {
             block.style.setProperty("background-image", block.dataset.original);
         });
+
+        // Tap effect for mobile
+        block.addEventListener("touchstart", () => {
+            block.style.setProperty("background-image", `url('${hoverGif}')`);
+        });
+
+        block.addEventListener("touchend", () => {
+            block.style.setProperty("background-image", block.dataset.original);
+        });
     });
+});
+</script>
 
     // Skills Bar Scroll Animation
     const progressBars = document.querySelectorAll(".progress");

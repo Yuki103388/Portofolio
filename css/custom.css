@@ -11231,6 +11231,20 @@ body {
   justify-items: center;
 }
 
+@media (max-width: 768px) {
+  .gif-blocks {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gif-blocks {
+    grid-template-columns: 1fr; /* 1 column for mobile devices */
+    gap: 10px;
+  }
+}
+
 .block {
   width: 200px;
   height: 200px;
