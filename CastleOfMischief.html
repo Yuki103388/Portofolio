@@ -126,8 +126,8 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Reload gefixt</h4>
-                                    <p class="mb-0 text-white-50">Hier moet je eerst reloaden en dan pas schieten</p>
+                                    <h4 class="text-white">Enemy Archer</h4>
+                                    <p class="mb-0 text-white-50">Enemy Archer schieten op je en pijl gaat richting jou</p>
                                 </div>
                             </div>
                         </div>
@@ -135,46 +135,93 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Code uitleg van hierboven</h4>
-                                    <pre class="mb-0 text-white-50"><code>void ReloadWeapon()
-                                {
-                                    if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isShooting)
-                                    {
-                                        if (playerGun != null && playerGun.hasPickedUpWeapon)
-                                        {
-                                            if (playerGun.currentAmmo > 0 && playerGun.currentClip < playerGun.maxClipSize)
-                                            {
-                                                isReloading = true;
-                                                Debug.Log("ReloadWeapon called");
-                                                playerGun.Reload();
-                                                isShooting = false;
-                                            }
-                                            else if (playerGun.currentAmmo == 0)
-                                            {
-                                                StartCoroutine(displayer.DisplayError("No ammo available for reload."));
-                                            }
-                                            else if (playerGun.currentClip == playerGun.maxClipSize)
-                                            {
-                                                StartCoroutine(displayer.DisplayError("Clip is already full."));
-                                            }
-                                        }
-                                    }
-                                    else if (isReloading && !playerGun.IsReloading())
-                                    {
-                                        isReloading = false;
-                                        isShooting = false;
-                                        playerGun.EnableReloadImage(false); // Schakel de reloadImage uit als het herladen is voltooid
-                                    }
-                                
-                                    if (isReloading)
-                                    {
-                                        playerGun.EnableReloadImage(true); 
-                                    }
-                                    else
-                                    {
-                                        playerGun.EnableReloadImage(false); 
-                                    }
-                                }</code></pre>
+                                    <div class="accordion" id="codeAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="background-color: #0680fa; color: #ffffff;"></button>
+                                                    Klik hier om de code te bekijken
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#codeAccordion">
+                                                <div class="accordion-body">
+                                                    <pre class="mb-0 text-blue-50">
+                                                        <code>
+                                                using UnityEngine;
+                                                using UnityEngine.AI;
+
+                                                public class ArcherController : MonoBehaviour
+                                                {
+                                                    private NavMeshAgent agent;
+                                                    private float lastAttackTime;
+                                                    private Transform player;
+                                                    private Animator animator;
+                                                    private AudioSource arrowSound;
+
+                                                    public StatsData enemyStats;
+                                                    public float attackDelay = 4f;
+                                                    public float attackRange = 30f;
+                                                    public GameObject arrowPrefab;
+
+                                                    void Start()
+                                                    {
+                                                        arrowSound = GetComponent<AudioSource>();
+                                                        agent = GetComponent<NavMeshAgent>();
+                                                        animator = GetComponent<Animator>();
+                                                        lastAttackTime = -attackDelay;
+
+                                                        player = GameObject.FindWithTag("Player")?.transform;
+                                                        if (player == null) Debug.LogWarning("Player not found!");
+                                                    }
+
+                                                    void Update()
+                                                    {
+                                                        if (player == null) return;
+
+                                                        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+                                                        if (distanceToPlayer <= attackRange && Time.time - lastAttackTime >= attackDelay)
+                                                        {
+                                                            lastAttackTime = Time.time;
+                                                            ShootArrow();
+                                                        }
+                                                        else
+                                                        {
+                                                            agent.destination = player.position;
+                                                        }
+
+                                                        animator.SetBool("Walk", agent.velocity.magnitude > 0.01f);
+                                                    }
+
+                                                    public void TakeDamage(int amount)
+                                                    {
+                                                        enemyStats.currentHealth -= amount;
+                                                        if (enemyStats.currentHealth <= 0) Die();
+                                                    }
+
+                                                    private void ShootArrow()
+                                                    {
+                                                        if (arrowPrefab == null) return;
+
+                                                        animator.SetTrigger("Attack");
+                                                        Invoke("SpawnArrow", 0.5f);
+                                                    }
+
+                                                    private void SpawnArrow()
+                                                    {
+                                                        Vector3 spawnPos = transform.position + Vector3.up * 1.5f + transform.forward;
+                                                        GameObject arrow = Instantiate(arrowPrefab, spawnPos, Quaternion.identity);
+                                                        arrow.GetComponent<Arrow>()?.SetDirection((player.position - spawnPos).normalized);
+                                                    }
+
+                                                    private void Die()
+                                                    {
+                                                        Destroy(gameObject);
+                                                    }
+                                                }
+                                                        </code>
+                                                    </pre>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                         </div>
