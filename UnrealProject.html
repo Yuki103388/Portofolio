@@ -41,8 +41,33 @@
                         <h1 class="mx-auto my-0 text-uppercase">UnrealProject</h1>
                         <div>
                         <h2 class="mx-auto my-0 text-uppercase text-white">Check the video below</h2>
+                        <div class="arrow-container">
+                            <i class="fas fa-arrow-down arrow-animation"></i>
+                        </div>
+                        <style>
+                            .arrow-container {
+                                margin-top: 20px;
+                                text-align: center;
+                            }
+                            .arrow-animation {
+                                font-size: 2rem;
+                                color: white;
+                                animation: bounce 1.5s infinite;
+                            }
+                            @keyframes bounce {
+                                0%, 20%, 50%, 80%, 100% {
+                                    transform: translateY(0);
+                                }
+                                40% {
+                                    transform: translateY(-10px);
+                                }
+                                60% {
+                                    transform: translateY(-5px);
+                                }
+                            }
+                        </style>
                         <video width="640" height="480" controls>
-                        <source src="assets/video/Ghost_AR.mp4" type="video/mp4">
+                        <source src="assets/video/Zuster.mp4" type="video/mp4">
 
                     </div>
                 </div>
@@ -58,22 +83,26 @@
                         </p>
                     </div>
                 </div>
-                <img class="img-fluid" src="assets/img/VR2.jpg" alt="ik" width="750" height="500" /> 
             </div>
         </section>
         <!-- Projects-->
-        <section class="projects-section bg-light" id="Twinstick">
+        <section class="projects-section bg-light" id="Zuster">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/GhostAR_Kleiner.jpg" alt="Logo van GhostAR" /></div>
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/Zuster.jpg" alt="Logo van Zuster" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <img class="img-fluid mb-3" src="assets/img/Unreal-Engine-Logo.png" alt="Unreal Logo" />
-                            
-                            <h4>Ghost AR</h4>
-                            <p class="text-black-50 mb-0">Ghost AR/VR project waarmee je in de echte wereld kon zien en spelen. 
-                                Het was vooral bedoeld om geesten te schieten, een beetje zoals een arcade game.
+                            <h3>Samenwerking</h3>
+                            <p class="text-black-50 mb-3">
+                                Dit project is uitgevoerd in samenwerking met 3 dev en 1 student van de Filmacademie Amsterdam. 
+                                De samenwerking duurde 8 weken.
+                            </p>
+                            <h4>Zuster</h4>
+                            <p class="text-black-50 mb-0"></p>
+                                Het Zuster-project was een samenwerkingsproject waarin we een gevoel van stress moesten creëren dat alleen de speler ervaart, 
+                                terwijl de rest van de omgeving kalm blijft.
                             </p>
                         </div>
                     </div>
